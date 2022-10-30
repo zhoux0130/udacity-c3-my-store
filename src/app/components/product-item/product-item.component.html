@@ -1,0 +1,12 @@
+  <div class="product-container">
+    <img class="product-image" src={{productItem.url}}/>
+    <div class="product-font">{{productItem.name}}</div>
+    <div class="product-font">${{productItem.price}}</div>
+    <div>
+      <select class="select-input" [(ngModel)]="selectedValue">
+          <option *ngFor="let i of amountConst" [ngValue]="i"
+             [selected]="selectedValue === i">{{i}}</option>
+      </select>
+    </div>
+    <button (click)="addToCart(productItem)" class="btn btn-primary">Add To Cart</button>
+  </div>
