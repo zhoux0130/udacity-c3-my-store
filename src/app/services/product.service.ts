@@ -14,6 +14,12 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
+
+  getById(id: number): ProductItem{
+    const item = this.getProducts()[id-1]
+    return item;
+  }
+
   getProducts(): ProductItem[] {
     // this.http.get<ProductItem[]>(
     //   'https://jsonplaceholder.typicode.com/posts?_limit=8').subscribe(res=>{

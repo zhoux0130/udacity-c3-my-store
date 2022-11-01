@@ -1,0 +1,13 @@
+.form-margin {
+  margin-bottom: 12px;
+  margin-left: 60px;
+}
+
+.form-margin label,input{
+  margin-bottom: 12px;
+}
+
+.error-message{
+  color: red;
+  font-size: 12px;
+}

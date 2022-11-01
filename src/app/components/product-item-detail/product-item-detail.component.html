@@ -1,1 +1,18 @@
-<p>product-item-detail works!</p>
+<div class="detail-container">
+  <div>
+    <img src={{productItem.url}}/>
+  </div>
+  <div class="detail-item">
+    <div class="item-font">{{productItem.name}}</div>
+    <div class="item-font">${{productItem.price}}</div>
+    <div class="item-font">{{productItem.description}}</div>
+    <div>
+      <select class="select-input" [(ngModel)]="selectedValue">
+          <option *ngFor="let i of amountConst" [ngValue]="i"
+             [selected]="selectedValue === i">{{i}}</option>
+      </select>
+    </div>
+    <button (click)="addToCart(productItem)" class="item-font btn btn-primary">Add To Cart</button><br>
+    <a style="text-decoration:none" routerLink=""> <- Back to product list</a>
+  </div>
+</div>

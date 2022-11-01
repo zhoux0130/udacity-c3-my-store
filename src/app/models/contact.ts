@@ -1,13 +1,11 @@
-export class Address{
-  id: number;
+export class Contact{
   name: string;
   address: string;
-  phone: string;
+  creditCard: number;
 
   constructor(){
-    this.id = 0;
     this.name = '';
     this.address = '';
-    this.phone = '';
+    this.creditCard = 0;
   }
 }

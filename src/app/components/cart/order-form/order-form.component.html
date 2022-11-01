@@ -1,0 +1,56 @@
+<form #form="ngForm" (ngSubmit)="submitForm()" class="card-panel form-margin">
+  <div>
+    <label>Full Name</label><br>
+    <input type="text" placeholder="minimum 3 characters" 
+        required
+        minlength="3"
+        #orderName="ngModel"
+        [(ngModel)]="name" name="name" [value]="name"><br>
+  </div>
+  <div  *ngIf="orderName.invalid && orderName.dirty">
+    <div
+      *ngIf="orderName.errors && orderName.hasError('minlength')"
+      class="error-message"
+    >
+      The name must contain at least 3 characters.
+    </div>
+  </div>
+  <div>
+    <label>Address</label><br>
+    <input type="text" placeholder="minimum 6 characters" 
+      required
+      minlength="6"
+      #orderAddress="ngModel"
+      [(ngModel)]="address" name="address" [value]="address"><br>
+  </div>
+  <div  *ngIf="orderAddress.invalid && orderAddress.dirty">
+    <div
+      *ngIf="orderAddress.errors && orderAddress.hasError('minlength')"
+      class="error-message"
+    >
+      The address must contain at least 6 characters.
+    </div>
+  </div>
+  <div>
+    <label>Credit card number</label><br>
+    <input type="text" placeholder="16-digit number"
+       oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+       required
+       minlength="16"
+       maxlength="16"
+       #orderCreditNo="ngModel"
+       [(ngModel)]="creditNo" name="creditNo" [value]="creditNo"><br>
+    <p class="info">We'll never share your payment details with anyone else.</p><br>
+
+  </div>
+  <div  *ngIf="orderCreditNo.invalid && orderCreditNo.dirty">
+    <div
+      *ngIf="orderCreditNo.errors && orderCreditNo.hasError('minlength')"
+      class="error-message"
+    >
+      The credit card number must contain 16 digits.
+    </div>
+  </div>
+
+  <input class="btn btn-primary" type="submit" [disabled]="form.invalid" value="Submit">
+</form>

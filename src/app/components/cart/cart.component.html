@@ -15,14 +15,5 @@
     </div>
     <p class="total-panel">Total:$ {{totalAmount}}</p>
   </div>
-  <form class="card-panel form-margin" *ngIf="myProducts.length > 0">
-    <label>Full Name</label><br>
-    <input type="text" placeholder="minimum 3 characters" value=""><br>
-    <label>Address</label><br>
-    <input type="text" placeholder="minimum 6 characters" value=""><br>
-    <label>Credit card number</label><br>
-    <input type="text" placeholder="16-digit number" value=""><br>
-    <p class="info">We'll never share your payment details with anyone else.</p><br>
-    <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
+  <app-order-form *ngIf="myProducts.length > 0" ></app-order-form>
 </div>

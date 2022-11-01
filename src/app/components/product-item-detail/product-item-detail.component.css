@@ -5,18 +5,25 @@ img {
 
 .select-input {
   width: 108px; 
+  height: 30px;
   margin-bottom: 8px;
 }
 
+.item-font{
+  margin-bottom: 10px;
+}
+
 .detail-container {
+  margin: 40px 400px;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  margin-top: 64px;
+  justify-content: flex-start;
 }
 
 .detail-item {
-  margin-left: 128px;
+  margin-left: 60px;
   margin-right: 128px;
 }
 

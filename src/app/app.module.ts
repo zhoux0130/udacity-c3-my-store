@@ -13,8 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './layout/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ContactComponent } from './components/contact/contact.component';
-
+import { OrderFormComponent } from './components/cart/order-form/order-form.component';
 
 
 @NgModule({
@@ -26,7 +25,7 @@ import { ContactComponent } from './components/contact/contact.component';
     ProductItemDetailComponent,
     ProductListComponent,
     HeaderComponent,
-    ContactComponent
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,

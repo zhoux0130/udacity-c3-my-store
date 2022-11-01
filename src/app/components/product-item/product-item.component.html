@@ -1,5 +1,5 @@
   <div class="product-container">
-    <img class="product-image" src={{productItem.url}}/>
+    <a [routerLink]="['/item', productItem.id,'details']"><img class="product-image" src={{productItem.url}}/></a>
     <div class="product-font">{{productItem.name}}</div>
     <div class="product-font">${{productItem.price}}</div>
     <div>

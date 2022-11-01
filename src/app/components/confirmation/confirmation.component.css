@@ -18,3 +18,7 @@
 .confirmation-item {
   margin-bottom: 30px;
 }
+
+.confirmation-price{
+  color: red;
+}

@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ProductItem } from '../models/product-item';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Order } from '../models/order';
+import { Contact } from '../models/contact';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +12,10 @@ export class CartService {
 
   myProducts: ProductItem[] = [];
   totalAmount: number = 0;
+  order: Order = new Order();
+
+
+  //order: BehaviorSubject<Order> = new BehaviorSubject<Order>(new Order());
 
   constructor() { }
 
@@ -18,6 +26,18 @@ export class CartService {
       this.myProducts = this.myProducts.filter((item)=> item.id !== product.id)
     }
     this.myProducts.unshift(product);
+  }
+
+  ordered(contact: Contact): void{
+    this.order = {
+      contact,
+      items: this.myProducts,
+      totalAmount: this.totalAmount
+    }
+  }
+
+  getOrder(): Order{
+    return this.order;
   }
 
   getMyCart(): ProductItem[]{
