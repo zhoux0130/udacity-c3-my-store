@@ -14,6 +14,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { OrderFormComponent } from './components/cart/order-form/order-form.component';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { OrderFormComponent } from './components/cart/order-form/order-form.comp
     ProductItemDetailComponent,
     ProductListComponent,
     HeaderComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

@@ -1,19 +1,12 @@
 <div class="cart-container">
-  <div class="empty-cart-message" *ngIf="myProducts.length === 0">
+  <div class="empty-cart-message" *ngIf="!(count| async)">
     未添加任何商品
   </div>
-  <div class="cart-item-details" *ngIf="myProducts.length > 0" >
-    <div *ngFor="let product of myProducts" >  
-      <div class="cart-item">
-        <div><img src={{product.url}}></div>
-        <div>
-          <div>{{product.name}}</div>
-          <div>${{product.price}}</div>
-          <div>Amount: <input class="number-input" type="text" [value]="product.amount"[(ngModel)]="product.amount"></div>
-        </div>
-      </div>
+  <div class="cart-item-details" *ngIf="(count| async)">
+    <div *ngFor="let product of myProducts | async" >  
+      <app-cart-item [product]="product"></app-cart-item>
     </div>
-    <p class="total-panel">Total:$ {{totalAmount}}</p>
+    <p class="total-panel">Total:$ {{totalAmount | async}}</p>
   </div>
-  <app-order-form *ngIf="myProducts.length > 0" ></app-order-form>
+  <app-order-form *ngIf="(count | async)" ></app-order-form>
 </div>

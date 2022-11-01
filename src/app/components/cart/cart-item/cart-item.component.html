@@ -1,0 +1,9 @@
+<div class="cart-item">
+    <div><img src={{product.url}}></div>
+    <div>
+      <div>{{product.name}}</div>
+      <div>${{product.price}}</div>
+      <div>Amount: <input (blur)="caculateTotal()" class="number-input" type="text" [value]="product.amount"[(ngModel)]="product.amount"></div>
+      <button (click)="removeFromCart()">remove</button>
+    </div>
+</div>

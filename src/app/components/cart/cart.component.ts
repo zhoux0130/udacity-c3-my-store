@@ -1,8 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Contact } from 'src/app/models/contact';
 import { ProductItem } from 'src/app/models/product-item';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -11,8 +12,10 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
 
-  myProducts: ProductItem[] = [];
-  totalAmount: number = 0;
+  myProducts: Observable<ProductItem[]> = new Observable<ProductItem[]>();
+  totalAmount: Observable<number> = new Observable<number>();
+  count: Observable<number> = new Observable<number>();
+  
   name: string = '';
   address: string = '';
   creditNo: number = 0;
@@ -20,9 +23,9 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.myProducts = this.cartService.getMyCart();
-    const total = this.cartService.calculate();
-    this.totalAmount = Math.round(total*100)/100;
+    this.myProducts = this.cartService.editedProducts;
+    this.totalAmount = this.cartService.total;
+    this.count = this.cartService.count;
   }
 
   submitForm(): void{
