@@ -30,7 +30,16 @@ export class ProductItemDetailComponent implements OnInit {
   ngOnInit(): void {
     this.selectedValue = 1;
     const itemId:number = this.activatedRoute.snapshot.params['id'];
-    this.productItem = this.productService.getById(itemId);
+
+    this.productService.fetchProducts().subscribe(res => {
+      res.map(item => {
+
+        if(item.id == itemId){
+          item.amount = 0;
+          this.productItem = item;
+        }
+      })
+    })
   }
 
   addToCart(product: ProductItem): void{
