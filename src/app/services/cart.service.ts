@@ -11,7 +11,7 @@ import { Contact } from '../models/contact';
 export class CartService {
 
   myProducts: ProductItem[] = [];
-  order: Order = new Order();
+  order: BehaviorSubject<Order> = new BehaviorSubject<Order>(new Order());
 
   count = new BehaviorSubject<number>(0);
   editedProducts = new BehaviorSubject<ProductItem[]>([]);
@@ -34,7 +34,7 @@ export class CartService {
   getTotal(){
     let sum = 0;
     this.myProducts.forEach(p => sum += p.amount * p.price);
-    return sum;
+    return Math.round(sum * 100) / 100;
   }
 
   getCount(){
@@ -44,15 +44,17 @@ export class CartService {
   }
 
   ordered(contact: Contact): void{
-    // this.order = {
-    //   contact,
-    //   items: this.myProducts,
-    //   totalAmount: this.totalAmount
-    // }
+    const order = {
+      contact,
+      items: this.myProducts,
+      totalAmount: this.total.getValue()
+    }
+
+    this.order.next(order);
   }
 
   getOrder(): Order{
-    return this.order;
+    return this.order.getValue();
   }
 
   getMyCart(): ProductItem[]{
@@ -61,6 +63,9 @@ export class CartService {
 
   removeFromCart(product: ProductItem): void{
     this.myProducts = this.myProducts.filter((item)=> item.id !== product.id)
+    this.editedProducts.next(this.myProducts);
+    this.count.next(this.getCount());
+    this.total.next(this.getTotal());
   }
 
   

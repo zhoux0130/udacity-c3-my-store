@@ -4,6 +4,6 @@
       <div>{{product.name}}</div>
       <div>${{product.price}}</div>
       <div>Amount: <input (blur)="caculateTotal()" class="number-input" type="text" [value]="product.amount"[(ngModel)]="product.amount"></div>
-      <button (click)="removeFromCart()">remove</button>
+      <button (click)="removeFromCart(product)">remove</button>
     </div>
 </div>

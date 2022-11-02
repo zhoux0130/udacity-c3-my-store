@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Order } from 'src/app/models/order';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -10,13 +11,11 @@ import { CartService } from 'src/app/services/cart.service';
 export class ConfirmationComponent implements OnInit {
 
   order:Order = new Order();
-
   constructor(private cartService: CartService) { 
   }
 
   ngOnInit(): void {
-    console.log(this.cartService.getOrder())
-    this.order = this.cartService.getOrder();
+    this.order = this.cartService.order.getValue();
     this.order.totalAmount = Math.round(this.order.totalAmount*100)/100
   }
 

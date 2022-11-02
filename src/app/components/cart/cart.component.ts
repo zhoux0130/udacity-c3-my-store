@@ -38,4 +38,11 @@ export class CartComponent implements OnInit {
     this.cartService.ordered(contact);
     this.router.navigateByUrl('/confirmation')
   }
+
+  removeFromCart(product: ProductItem):void{
+    this.cartService.removeFromCart(product);
+    this.myProducts = this.cartService.editedProducts;
+    this.count = this.cartService.count;
+    this.totalAmount = this.cartService.total;
+  }
 }

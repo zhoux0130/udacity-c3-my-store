@@ -4,9 +4,9 @@
   </div>
   <div class="cart-item-details" *ngIf="(count| async)">
     <div *ngFor="let product of myProducts | async" >  
-      <app-cart-item [product]="product"></app-cart-item>
+      <app-cart-item [product]="product" (removeFromCart)="removeFromCart(product)"></app-cart-item>
     </div>
-    <p class="total-panel">Total:$ {{totalAmount | async}}</p>
+    <p class="total-panel" *ngIf="(count| async)">Total:$ {{(totalAmount | async)}}</p>
   </div>
   <app-order-form *ngIf="(count | async)" ></app-order-form>
 </div>

@@ -17,10 +17,9 @@ export class CartItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  removeFromCart(): void{
-    console.log('000')
-    this.removeItemFromCart.emit(this.product);
-    this.cartService.removeFromCart(this.product);
+  removeFromCart(product: ProductItem): void{
+    this.removeItemFromCart.emit(product);
+    this.cartService.removeFromCart(product);
   }
 
   caculateTotal(): void {

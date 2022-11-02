@@ -30,7 +30,6 @@ export class ProductItemDetailComponent implements OnInit {
   ngOnInit(): void {
     this.selectedValue = 1;
     const itemId:number = this.activatedRoute.snapshot.params['id'];
-    console.log('=======',this.productService.getById(itemId))
     this.productItem = this.productService.getById(itemId);
   }
 
