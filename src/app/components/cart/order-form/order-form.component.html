@@ -41,11 +41,10 @@
     <p class="info">We'll never share your payment details with anyone else.</p><br>
 
   </div>
-  <div  *ngIf="errorFlag" [(ngModel)]="errorFlag" [ngModelOptions]="{standalone: true}">
+  <div  *ngIf="errorFlag">
     <div
       class="error-message"
     >
-    {{errorFlag}}
       The credit card number must contain 16 digits.
     </div>
   </div>
